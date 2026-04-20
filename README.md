@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4d1782e6-aff6-41ae-b8cd-eb51f4285a86" alt="Claude Bug Bounty Logo" width="320"/>
-</p>  
+  <img src="logo.png" alt="Claude Bug Bounty Logo" width="320"/>
+</p>
+
 <div align="center">
 
 <img src="https://img.shields.io/badge/v3.1.0-Caido_Edition-blueviolet?style=for-the-badge" alt="v3.1.0">
@@ -12,9 +13,12 @@
 
 *Your AI hunting partner that remembers past targets, spots vulnerabilities, and writes reports for you.*
 <br>
+*The community made a meme coin to support the project CA: J6VzBAGnyyNEyzyHhauwg3ofRctFxnTLzQCcjUdGpump*
+<sub>by <a href="https://shuvonsec.me">shuvonsec</a></sub>
 
 <br>
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![Tests](https://img.shields.io/badge/Tests-129_passing-brightgreen.svg?style=flat-square)](tests/)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Plugin-D97706.svg?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/claude-code)
@@ -169,9 +173,31 @@ That's the core loop. Four commands, full workflow.
 
 Think of it like a team of specialists, each doing one job:
 
-<p align="center">
-  <img width="400" src="https://github.com/user-attachments/assets/4080c8a8-33b7-4837-abce-525df6d8dee6" />
-</p>         
+```
+                          YOU
+                           |
+                     ┌─────▼─────┐
+                     │   Claude   │ ◄── Caido MCP + caido-mode skill (live HTTP history, replay, edit)
+                     │   Code     │ ◄── HackerOne MCP (program intel, disclosed reports)
+                     └─────┬─────┘
+                           |
+           ┌───────────────┼───────────────┐
+           |               |               |
+     ┌─────▼─────┐  ┌──────▼──────┐  ┌────▼────┐
+     │   Recon    │  │    Hunt     │  │ Report  │
+     │  (map it)  │  │  (test it)  │  │(write it│
+     └─────┬─────┘  └──────┬──────┘  └────┬────┘
+           |               |               |
+     finds all          scope check      H1/Bugcrowd
+     subdomains,        replay via       Intigriti
+     URLs, APIs         Caido w/ auth    Immunefi
+                        7-Q validate     CVSS 3.1
+           |               |               |
+     ┌─────▼───────────────▼───────────────▼─────┐
+     │              Hunt Memory                    │
+     │  journal · patterns · audit · rate limit    │
+     └────────────────────────────────────────────-┘
+```
 
 Each step feeds the next. Claude orchestrates all of it, or you run any step on its own.
 
