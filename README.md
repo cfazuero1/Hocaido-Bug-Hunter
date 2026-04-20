@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0e4e9b45-500a-4048-a40b-60c6ed17ae75" alt="Claude Bug Bounty Logo" width="320"/>
+  <img src="https://github.com/user-attachments/assets/4d1782e6-aff6-41ae-b8cd-eb51f4285a86" alt="Claude Bug Bounty Logo" width="320"/>
 </p>  
 <div align="center">
 
