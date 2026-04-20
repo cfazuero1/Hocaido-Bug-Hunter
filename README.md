@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="Claude Bug Bounty Logo" width="320"/>
+  <img src="https://github.com/user-attachments/assets/4acbdd65-1399-4281-a452-47edaecf4542" alt="Claude Bug Bounty Logo" width="320"/>
 </p>
 
 <div align="center">
@@ -171,31 +171,9 @@ That's the core loop. Four commands, full workflow.
 
 Think of it like a team of specialists, each doing one job:
 
-```
-                          YOU
-                           |
-                     ┌─────▼─────┐
-                     │   Claude   │ ◄── Caido MCP + caido-mode skill (live HTTP history, replay, edit)
-                     │   Code     │ ◄── HackerOne MCP (program intel, disclosed reports)
-                     └─────┬─────┘
-                           |
-           ┌───────────────┼───────────────┐
-           |               |               |
-     ┌─────▼─────┐  ┌──────▼──────┐  ┌────▼────┐
-     │   Recon    │  │    Hunt     │  │ Report  │
-     │  (map it)  │  │  (test it)  │  │(write it│
-     └─────┬─────┘  └──────┬──────┘  └────┬────┘
-           |               |               |
-     finds all          scope check      H1/Bugcrowd
-     subdomains,        replay via       Intigriti
-     URLs, APIs         Caido w/ auth    Immunefi
-                        7-Q validate     CVSS 3.1
-           |               |               |
-     ┌─────▼───────────────▼───────────────▼─────┐
-     │              Hunt Memory                    │
-     │  journal · patterns · audit · rate limit    │
-     └────────────────────────────────────────────-┘
-```
+<p align="center">
+  <img width="400" src="https://github.com/user-attachments/assets/308b242f-e8f9-4945-bef0-8b24661ae298" />
+</p>
 
 Each step feeds the next. Claude orchestrates all of it, or you run any step on its own.
 
