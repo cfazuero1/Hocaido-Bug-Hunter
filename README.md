@@ -99,9 +99,9 @@ Most hunters waste hours on things that shouldn't take that long:
 ## Quick Start
 
 > **Prerequisite:** [Claude Code](https://claude.ai/claude-code) installed, plus [Caido](https://caido.io) running locally (free tier works, Individual recomended)
->                   Please make sure that you have configure the following mcp before using Claude code. 
->                   https://github.com/Sicks3c/hackerone-mcp-server | https://github.com/c0tton-fluff/caido-mcp-server | https://github.com/caido/skills
->                   Do not use the caido-mode without adding the following library and variable below in the file caido-client.ts in the folder caido-mode:
+>                  <br> Please make sure that you have configure the following mcp before using Claude code. 
+>                  <br> https://github.com/Sicks3c/hackerone-mcp-server | https://github.com/c0tton-fluff/caido-mcp-server | https://github.com/caido/skills
+>                  <br> Do not use the caido-mode without adding the following library and variable below in the file caido-client.ts in the folder caido-mode:
                     ```
                           import WebSocket from "ws";
                           global.WebSocket = WebSocket;
