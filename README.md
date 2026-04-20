@@ -13,8 +13,6 @@
 
 *Your AI hunting partner that remembers past targets, spots vulnerabilities, and writes reports for you.*
 <br>
-*The community made a meme coin to support the project CA: J6VzBAGnyyNEyzyHhauwg3ofRctFxnTLzQCcjUdGpump*
-<sub>by <a href="https://shuvonsec.me">shuvonsec</a></sub>
 
 <br>
 
