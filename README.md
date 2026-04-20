@@ -1,7 +1,5 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0e4e9b45-500a-4048-a40b-60c6ed17ae75" alt="Claude Bug Bounty Logo" width="320"/>
-</p>
-
 <div align="center">
 
 <img src="https://img.shields.io/badge/v3.1.0-Caido_Edition-blueviolet?style=for-the-badge" alt="v3.1.0">
