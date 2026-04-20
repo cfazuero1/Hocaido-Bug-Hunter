@@ -738,7 +738,7 @@ git push origin feature/your-contribution
 
 ### Connect
 
-[GitHub](https://github.com/shuvonsec) &nbsp;&nbsp;|&nbsp;&nbsp; [Twitter](https://x.com/shuvonsec) &nbsp;&nbsp;|&nbsp;&nbsp; [LinkedIn](https://linkedin.com/in/shuvonsec) &nbsp;&nbsp;|&nbsp;&nbsp; [Email](mailto:shuvonsec@gmail.com)
+[GitHub](https://github.com/cfazuero1) &nbsp;&nbsp;|&nbsp;&nbsp; [LinkedIn](https://www.linkedin.com/in/christian-azuero/) &nbsp;&nbsp;|&nbsp;&nbsp; [Email](mailto:christian.azuero@gmail.com)
 
 <br>
 
@@ -754,6 +754,6 @@ Never test systems without explicit permission. Follow responsible disclosure pr
 
 **Built by bug hunters, for bug hunters.**
 
-If this helped you find a bug, leave a star.
+If this helped you find a bug, leave a like in linkedin.
 
 </div>
