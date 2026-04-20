@@ -204,56 +204,58 @@ if ! $SKIP_CAIDO; then
     echo ""
     log_info "Installing Caido..."
     CAIDO_MCP_DIR="${SCRIPT_DIR}/mcp/caido-mcp-server-main"
+    mkdir -p "$CAIDO_MCP_DIR"
 
-    # Caido desktop (Linux .deb — local or fresh download)
+    # URLs for version 0.56.0
+    CAIDO_DEB_URL="https://caido.download/releases/v0.56.0/caido-desktop-v0.56.0-linux-x86_64.deb"
+    CAIDO_CLI_URL="https://caido.download/releases/v0.56.0/caido-cli-v0.56.0-linux-${ARCH_ALT}.tar.gz"
+
+    # 1. Caido Desktop (.deb)
     if [ "$OS_KERNEL" = "linux" ] && $HAVE_DPKG; then
-        CAIDO_DEB=""
-        for candidate in \
-            "${CAIDO_MCP_DIR}/caido-desktop-v0.56.0-linux-x86_64.deb" \
-            "${CAIDO_MCP_DIR}/caido-desktop.deb" \
-            "${CAIDO_MCP_DIR}/caido.deb"; do
-            if [ -f "$candidate" ]; then CAIDO_DEB="$candidate"; break; fi
-        done
         if command -v caido &>/dev/null; then
             log_ok "caido desktop already installed"
-        elif [ -n "$CAIDO_DEB" ]; then
-            echo "    Installing $(basename "$CAIDO_DEB")..."
-            if sudo dpkg -i "$CAIDO_DEB" 2>/dev/null || sudo apt-get install -f -y 2>/dev/null; then
-                log_ok "caido desktop installed"
-            else
-                log_err "caido .deb install failed"
-            fi
         else
-            log_warn "no local caido .deb — grab from https://caido.io"
+            CAIDO_DEB_TEMP="/tmp/caido-desktop.deb"
+            log_info "Downloading Caido desktop..."
+            if curl -L "$CAIDO_DEB_URL" -o "$CAIDO_DEB_TEMP"; then
+                log_info "Installing Caido desktop..."
+                if sudo dpkg -i "$CAIDO_DEB_TEMP" 2>/dev/null || sudo apt-get install -f -y 2>/dev/null; then
+                    log_ok "caido desktop installed"
+                else
+                    log_err "caido .deb install failed"
+                fi
+                rm -f "$CAIDO_DEB_TEMP"
+            else
+                log_err "Failed to download Caido desktop"
+            fi
         fi
     elif [ "$OS_KERNEL" = "darwin" ] && $HAVE_BREW; then
         if brew list --cask caido &>/dev/null; then
             log_ok "caido already installed via brew cask"
         else
-            brew install --cask caido 2>/dev/null \
-                && log_ok "caido installed" \
-                || log_warn "brew caido install failed — download from https://caido.io"
+            brew install --cask caido 2>/dev/null && log_ok "caido installed" || log_warn "brew caido install failed"
         fi
-    else
-        log_warn "Caido desktop must be installed manually on this platform (https://caido.io)"
     fi
 
-    # Caido CLI (from bundled tarball, if present)
-    CAIDO_CLI_TARBALL="${CAIDO_MCP_DIR}/caido-cli-v0.56.0-linux-${ARCH_ALT}.tar.gz"
+    # 2. Caido CLI
     if [ ! -x "/usr/local/bin/caido-cli" ] && [ ! -x "${HOME}/.local/bin/caido-cli" ]; then
-        if [ -f "$CAIDO_CLI_TARBALL" ]; then
-            echo "    Extracting caido-cli..."
-            mkdir -p "${HOME}/.local/bin"
-            tar -xzf "$CAIDO_CLI_TARBALL" -C /tmp/ && \
+        log_info "Downloading and extracting caido-cli..."
+        mkdir -p "${HOME}/.local/bin"
+        CAIDO_CLI_TEMP="/tmp/caido-cli.tar.gz"
+        
+        if curl -L "$CAIDO_CLI_URL" -o "$CAIDO_CLI_TEMP"; then
+            tar -xzf "$CAIDO_CLI_TEMP" -C /tmp/ && \
                 mv /tmp/caido-cli "${HOME}/.local/bin/caido-cli" 2>/dev/null || true
             chmod +x "${HOME}/.local/bin/caido-cli" 2>/dev/null || true
+            
             if [ -x "${HOME}/.local/bin/caido-cli" ]; then
                 log_ok "caido-cli → ~/.local/bin/caido-cli"
             else
-                log_warn "caido-cli tarball extraction failed"
+                log_err "caido-cli extraction failed"
             fi
+            rm -f "$CAIDO_CLI_TEMP"
         else
-            log_warn "no caido-cli tarball bundled — install.sh will fetch it from GitHub"
+            log_err "Failed to download Caido CLI"
         fi
     else
         log_ok "caido-cli already present"
