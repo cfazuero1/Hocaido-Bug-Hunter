@@ -1,0 +1,18 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/home/cloud/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-04-20T11:31:28.884Z"
+  },
+  "lc-marketplace": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/refractionPOINT/lc-ai.git"
+    },
+    "installLocation": "/home/cloud/.claude/plugins/marketplaces/lc-marketplace",
+    "lastUpdated": "2026-04-09T11:31:32.792Z"
+  }
+}

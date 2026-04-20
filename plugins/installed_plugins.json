@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "plugins": {
+    "lc-essentials@lc-marketplace": [
+      {
+        "scope": "project",
+        "projectPath": "/mnt/c/Users/cloud/Downloads/AgenticAI/lc-ai-master",
+        "installPath": "/home/cloud/.claude/plugins/cache/lc-marketplace/lc-essentials/3.1.0",
+        "version": "3.1.0",
+        "installedAt": "2026-04-09T11:32:08.864Z",
+        "lastUpdated": "2026-04-09T11:34:27.893Z",
+        "gitCommitSha": "cb2b384637000ae3f2c9d31386e57149179e023b"
+      }
+    ],
+    "lc-advanced-skills@lc-marketplace": [
+      {
+        "scope": "project",
+        "projectPath": "/mnt/c/Users/cloud/Downloads/AgenticAI/lc-ai-master",
+        "installPath": "/home/cloud/.claude/plugins/cache/lc-marketplace/lc-advanced-skills/1.2.0",
+        "version": "1.2.0",
+        "installedAt": "2026-04-09T11:34:27.893Z",
+        "lastUpdated": "2026-04-09T11:34:27.893Z",
+        "gitCommitSha": "cb2b384637000ae3f2c9d31386e57149179e023b"
+      }
+    ],
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/cloud/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+        "version": "unknown",
+        "installedAt": "2026-04-19T05:50:40.186Z",
+        "lastUpdated": "2026-04-19T05:50:40.186Z"
+      }
+    ]
+  }
+}
