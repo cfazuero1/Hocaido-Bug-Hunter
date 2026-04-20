@@ -172,9 +172,9 @@ That's the core loop. Four commands, full workflow.
 
 Think of it like a team of specialists, each doing one job:
 
-
-<img width="1024" height="1536" alt="diagram" src="https://github.com/user-attachments/assets/4080c8a8-33b7-4837-abce-525df6d8dee6" />
-               
+<p align="center">
+  <img width="400" src="https://github.com/user-attachments/assets/4080c8a8-33b7-4837-abce-525df6d8dee6" />
+</p>         
 
 Each step feeds the next. Claude orchestrates all of it, or you run any step on its own.
 
