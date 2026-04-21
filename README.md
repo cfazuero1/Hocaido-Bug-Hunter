@@ -271,6 +271,27 @@ npx tsx ~/.claude/skills/caido-mode/caido-client.ts export-curl <id>            
 | **token-auditor** | Fast meme coin / token rug pull and security analysis | Sonnet |
 
 <br>
+---
+
+## 7-Question Gate — Bug Killer
+
+  Ask **in order**. One wrong answer = STOP, kill it, move on.
+
+  | # | Question | KILL if... |
+  |---|----------|------------|
+  | **Q1** | Can an attacker use this RIGHT NOW, step by step? Fill: Setup → exact HTTP request → Result → Impact →
+  Cost. | You can't write step 2 as a concrete `curl`-ready HTTP request. |
+  | **Q2** | Is the impact on the program's accepted list? | Maps to a listed exclusion ("out of scope bugs"). |
+  | **Q3** | Is the root cause in an in-scope asset? | It's a third-party SaaS (Stripe/Salesforce/Auth0),
+  staging/internal, or not on the scope list. |
+  | **Q4** | Does it require privileged access the attacker can't get? | "Admin can do X" = centralization risk, not a
+  bug. Physical access / victim's MFA device / already-compromised account = invalid. |
+  | **Q5** | Already known or accepted behavior? | Found in disclosed reports, GitHub security issues, changelog, or API
+   docs as "by design". |
+  | **Q6** | Can you prove impact beyond "technically possible"? | Only have `alert(1)`, DNS ping, or 200 status — no
+  actual data exfil, cookie theft, or internal service response. → **Downgrade, don't kill.** |
+  | **Q7** | Known-invalid bug class? | On the NEVER-SUBMIT list with no chain (missing headers, self-XSS, logout CSRF,
+  open redirect alone, SSRF DNS-only, clickjacking on non-sensitive pages, etc.). |
 
 ---
 
