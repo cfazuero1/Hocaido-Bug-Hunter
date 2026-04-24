@@ -160,11 +160,7 @@ That's the core loop. Four commands, full workflow.
 /intel target.com               # get CVEs + disclosed reports relevant to this target
 ```
 
-> **Don't use Claude Code?** Run the Python tools directly:
-> ```bash
-> python3 tools/hunt.py --target target.com
-> ./tools/recon_engine.sh target.com
-> ```
+
 
 <br>
 
@@ -351,29 +347,6 @@ Public API integration:
 
 </details>
 
-<details>
-<summary><b>On-Demand Intel</b> — <code>/intel</code></summary>
-<br>
-
-Wraps `learn.py` + HackerOne MCP + hunt memory:
-- Flags **untested CVEs** matching the target's tech stack
-- Shows **new endpoints** not in your tested list
-- Surfaces **cross-target patterns** from your own hunt history
-- Prioritizes: CRITICAL untested > HIGH untested > already tested
-
-</details>
-
-<details>
-<summary><b>Deterministic Scope Safety</b></summary>
-<br>
-
-`scope_checker.py` uses anchored suffix matching — code check, not LLM judgment:
-- `*.target.com` matches `api.target.com` but NOT `evil-target.com`
-- Excluded domains always win over wildcards
-- IP addresses rejected with warning (match by domain only)
-- Every test filtered through scope before execution
-
-</details>
 
 <br>
 
@@ -440,42 +413,6 @@ Wraps `learn.py` + HackerOne MCP + hunt memory:
 ## Tools & Architecture
 
 <details>
-<summary><b>Core Pipeline</b> — <code>tools/</code></summary>
-<br>
-
-| Tool | What It Does |
-|:---|:---|
-| `hunt.py` | Master orchestrator — chains recon, scan, report |
-| `recon_engine.sh` | Subdomain enum + DNS + live hosts + URL crawl |
-| `learn.py` | CVE + disclosure intel from NVD, GitHub Advisory, HackerOne |
-| `intel_engine.py` | Memory-aware intel wrapper (learn.py + HackerOne MCP + memory) |
-| `validate.py` | 4-gate validation — scope, impact, dedup, CVSS |
-| `report_generator.py` | H1/Bugcrowd/Intigriti report output |
-| `scope_checker.py` | Deterministic scope safety with anchored suffix matching |
-| `cicd_scanner.sh` | GitHub Actions SAST — wraps [sisakulint](https://github.com/sisaku-security/sisakulint) remote scan (52 rules, 81.6% GHSA coverage) |
-| `mindmap.py` | Prioritized attack mindmap generator |
-
-</details>
-
-<details>
-<summary><b>Vulnerability Scanners</b> — <code>tools/</code></summary>
-<br>
-
-| Tool | Target |
-|:---|:---|
-| `h1_idor_scanner.py` | Object-level and field-level IDOR |
-| `h1_mutation_idor.py` | GraphQL mutation IDOR |
-| `h1_oauth_tester.py` | OAuth misconfigs (PKCE, state, redirect_uri) |
-| `h1_race.py` | Race conditions (TOCTOU, limit overrun) |
-| `zero_day_fuzzer.py` | Logic bugs, edge cases, access control |
-| `cve_hunter.py` | Tech fingerprinting + known CVE matching |
-| `vuln_scanner.sh` | Orchestrates nuclei + dalfox + sqlmap |
-| `hai_probe.py` | AI chatbot IDOR, prompt injection |
-| `hai_payload_builder.py` | Prompt injection payload generator |
-
-</details>
-
-<details>
 <summary><b>MCP Integrations</b> — <code>mcp/</code></summary>
 <br>
 
@@ -506,19 +443,6 @@ Deps are installed by `install.sh` in the destination dir (not shipped via `node
 </details>
 
 <details>
-<summary><b>Hunt Memory System</b> — <code>memory/</code></summary>
-<br>
-
-| Module | What It Does |
-|:---|:---|
-| `hunt_journal.py` | Append-only JSONL hunt log (concurrent-safe via `fcntl.flock`) |
-| `pattern_db.py` | Cross-target pattern DB — matches by vuln class + tech stack |
-| `audit_log.py` | Every outbound request logged + per-host rate limiter + circuit breaker |
-| `schemas.py` | Schema validation for all entry types (versioned) |
-
-</details>
-
-<details>
 <summary><b>Full Directory Structure</b> — click to expand</summary>
 <br>
 
@@ -528,7 +452,6 @@ claude-bug-bounty/
 │   └── caido-mode/             Caido SDK CLI for Claude
 ├── commands/                   14 slash commands
 ├── agents/                     8 specialized AI agents
-├── tools/                      21 Python/shell tools
 ├── memory/                     Persistent hunt memory system
 ├── mcp/                        MCP server integrations
 │   ├── caido-mcp-server-main/  Caido web proxy
